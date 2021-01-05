@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Students</string>
+    <!--Bottom Navigation Bar Strings-->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_homework">Home Work</string>
+    <string name="menu_fee">Fee</string>
+    <string name="menu_notice">Notice</string>
+
+    <!--Login Signup Screen strings-->
+    <string name="login">Login</string>
+    <string name="username">Mobile No</string>
+
+    <!--Validation Strings for login-->
+    <string name="mobile_empty_error">Mobile number cannot be empty</string>
+    <string name="enter_mobile">Enter mobile number</string>
+    <string name="enter_mobile_only">Enter mobile number only</string>
+    <string name="enter_mobile_number_complete">Enter complete mobile number</string>
+    <string name="empty_string" />
+    <string name="device_type">android</string>
+    <string name="login_successful_message">login successfully.</string>
+    <string name="otp_successful_message">Otp Verified successfully.</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="str_verify">Verify</string>
+    <string name="phone">phone</string>
+    <string name="otp">otp</string>
+    <string name="otpBundle">otpBundle</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="selectStudentBundle">select_student_bundle</string>
+    <string name="select_student">Select Student</string>
+    <string name="str_done">Done</string>
+    <string name="str_grno">G.R. No.: %s</string>
+    <string name="str_rollno">Roll No.: %s</string>
+    <string name="student_list_successful">Student List found successfully.</string>
+    <string name="student_selected_successfully">Student has been Selected successfully.</string>
+    <string name="loading">Please Wait...</string>
+
+</resources>
