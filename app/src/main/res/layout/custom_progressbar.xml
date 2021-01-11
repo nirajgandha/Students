@@ -4,13 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/inprogress_background">
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
         android:indeterminateDrawable="@drawable/gradient_progress"
         app:layout_constraintBottom_toBottomOf="@+id/txtLoading"
         app:layout_constraintEnd_toEndOf="@+id/txtLoading"
@@ -19,15 +20,17 @@
         app:layout_constraintTop_toTopOf="@+id/txtLoading" />
 
     <TextView
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
         android:text="@string/loading"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="visible"
+        android:textSize="@dimen/_14ssp"
         android:gravity="center"
         android:textStyle="bold"
+        android:textColor="@color/purple_700"
         android:id="@+id/txtLoading"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

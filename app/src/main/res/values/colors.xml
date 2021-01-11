@@ -10,4 +10,15 @@
     <color name="color_transparent">#00000000</color>
     <color name="color_detail_textview_login_signup">#5200aa</color>
     <color name="holo_red_light">#ffff4444</color>
+    <color name="daysLabelColor">#000000</color>
+    <color name="currentMonthDayColor">#de000000</color>
+    <color name="nextMonthDayColor">#1F000000</color>
+    <color name="disabledDialogButtonColor">#1F000000</color>
+
+    <color name="itemHighlightColor">#1F000000</color>
+    <color name="itemFocusedColor">#1A000000</color>
+
+    <color name="defaultColor">#2962FF</color>
+    <color name="absent">#8b0100</color>
+    <color name="present">#018001</color>
 </resources>

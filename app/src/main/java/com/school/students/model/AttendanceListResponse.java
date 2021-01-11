@@ -4,15 +4,15 @@ import java.util.*;
 
 import com.google.gson.annotations.SerializedName;
 
-public class StudentListResponse {
+public class AttendanceListResponse{
 
 	@SerializedName("data")
-	private ArrayList<Student> data;
+	private ArrayList<Attendance> data;
 
 	@SerializedName("meta")
 	private Meta meta;
 
-	public ArrayList<Student> getData(){
+	public ArrayList<Attendance> getData(){
 		return data;
 	}
 
@@ -23,7 +23,7 @@ public class StudentListResponse {
 	@Override
  	public String toString(){
 		return 
-			"StudentListResponse{" +
+			"AttendanceListResponse{" + 
 			"data = '" + data + '\'' + 
 			",meta = '" + meta + '\'' + 
 			"}";

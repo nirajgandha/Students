@@ -3,6 +3,7 @@ plugins {
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 
 android {
@@ -11,13 +12,14 @@ android {
 
     defaultConfig {
         applicationId "com.school.students"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
-        versionName "0.1"
+        versionName "0.2"
         buildFeatures {
             viewBinding true
         }
+        archivesBaseName = "students_versionCode_" + versionCode + "_versionName_" + versionName
     }
 
     buildTypes {

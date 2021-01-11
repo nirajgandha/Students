@@ -9,7 +9,8 @@ import com.school.students.R
 import com.school.students.adapter.StudentListAdapter
 import com.school.students.databinding.ActivitySelectStudentBinding
 import com.school.students.interfaces.StudentSelectedListener
-import com.school.students.model.StudentListResponse
+import com.school.students.model.GetStudentListResponse
+import com.school.students.model.SelectStudentResponse
 import com.school.students.model.Student
 import com.school.students.retrofit_api.APIClient
 import com.school.students.retrofit_api.APIInterface
@@ -41,7 +42,6 @@ class SelectStudentActivity : AppCompatActivity(), StudentSelectedListener {
             if (student == null){
                 showError("Select the student to continue")
             } else {
-                saveStudentPreference(this, student!!)
                 callSelectedStudent()
             }
         }
@@ -50,9 +50,9 @@ class SelectStudentActivity : AppCompatActivity(), StudentSelectedListener {
     private fun callSelectedStudent() {
         Utils.showProgress(this)
         val apiInterface = APIClient.getClient().create(APIInterface::class.java)
-        val loginApi: Call<StudentListResponse> = apiInterface.selectStudentApi(phone, student!!.id)
-        loginApi.enqueue(object : Callback<StudentListResponse> {
-            override fun onResponse(call: Call<StudentListResponse>, response: Response<StudentListResponse>) {
+        val loginApi: Call<SelectStudentResponse> = apiInterface.selectStudentApi(phone, student!!.id)
+        loginApi.enqueue(object : Callback<SelectStudentResponse> {
+            override fun onResponse(call: Call<SelectStudentResponse>, response: Response<SelectStudentResponse>) {
                 Utils.hideProgress()
                 val body = response.body()
                 if (body != null){
@@ -70,7 +70,7 @@ class SelectStudentActivity : AppCompatActivity(), StudentSelectedListener {
                 }
             }
 
-            override fun onFailure(call: Call<StudentListResponse>, t: Throwable) {
+            override fun onFailure(call: Call<SelectStudentResponse>, t: Throwable) {
                 Utils.hideProgress()
                 showError("Error occurred!! Please try again later")
                 t.printStackTrace()
@@ -90,9 +90,9 @@ class SelectStudentActivity : AppCompatActivity(), StudentSelectedListener {
     private fun callGetStudentListApi(phone: String) {
         Utils.showProgress(this)
         val apiInterface = APIClient.getClient().create(APIInterface::class.java)
-        val loginApi: Call<StudentListResponse> = apiInterface.getStudentListApi(phone)
-        loginApi.enqueue(object : Callback<StudentListResponse> {
-            override fun onResponse(call: Call<StudentListResponse>, response: Response<StudentListResponse>) {
+        val loginApi: Call<GetStudentListResponse> = apiInterface.getStudentListApi(phone)
+        loginApi.enqueue(object : Callback<GetStudentListResponse> {
+            override fun onResponse(call: Call<GetStudentListResponse>, response: Response<GetStudentListResponse>) {
                 Utils.hideProgress()
                 val body = response.body()
                 if (body != null){
@@ -109,7 +109,7 @@ class SelectStudentActivity : AppCompatActivity(), StudentSelectedListener {
                 }
             }
 
-            override fun onFailure(call: Call<StudentListResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GetStudentListResponse>, t: Throwable) {
                 Utils.hideProgress()
                 showError("Error occurred!! Please try again later")
                 t.printStackTrace()

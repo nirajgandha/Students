@@ -13,10 +13,7 @@ import com.school.students.R
 import com.school.students.adapter.MenuAdapter
 import com.school.students.customui.SpanningLinearLayoutManager
 import com.school.students.databinding.ActivityMainBinding
-import com.school.students.fragments.FeeFragment
-import com.school.students.fragments.HomeFragment
-import com.school.students.fragments.HomeWorkFragment
-import com.school.students.fragments.NoticeFragment
+import com.school.students.fragments.*
 import com.school.students.interfaces.ItemClickListener
 import com.school.students.model.Menu
 import com.school.students.utils.Preference
@@ -41,7 +38,6 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         _activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
         resumeFragment = getString(R.string.menu_home);
-        activityMainBinding.studentNameTextView.text = "${preference!!.getString(preference!!.STUDENT_FIRST_NAME, "")} ${preference!!.getString(preference!!.STUDENT_LAST_NAME, "")}"
         loadData()
     }
 
@@ -84,13 +80,13 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         menuArrayList!!.add(menu)
 
         menuAdapter = MenuAdapter(menuArrayList!!, itemClickListener as MainActivity, this@MainActivity)
-        activityMainBinding.bottomRecyclerView.adapter = menuAdapter
 
         val spanningLinearLayoutManager = SpanningLinearLayoutManager(this, menuAdapter!!.itemCount)
         spanningLinearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        spanningLinearLayoutManager.setScrollHorizontally(true)
-        spanningLinearLayoutManager.setMaxItemsToShowInScreen(4)
+        spanningLinearLayoutManager.setScrollHorizontally(false)
+        spanningLinearLayoutManager.setMaxItemsToShowInScreen(5)
         activityMainBinding.bottomRecyclerView.layoutManager = spanningLinearLayoutManager
+        activityMainBinding.bottomRecyclerView.adapter = menuAdapter
         onItemClick(resumeFragment!!)
     }
 
@@ -138,6 +134,15 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         }
     }
 
+    fun backPressFromOtherFragment(){
+        onItemClick(getString(R.string.menu_home))
+    }
+
+    fun openOtherFragment(fragment: Fragment) {
+        openFragment(fragment, false)
+        setSelected(2)
+    }
+
     /**
      * Item Selected Color Change
      *
@@ -175,13 +180,19 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
 
     var toast: Toast? = null
     override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            toast!!.cancel()
-            super.onBackPressed()
-            return
+        if (selectedFragment is HomeFragment) {
+            if (doubleBackToExitPressedOnce) {
+                if (toast != null)
+                    toast!!.cancel()
+                super.onBackPressed()
+                return
+            }
+            this.doubleBackToExitPressedOnce = true
+            toast = Toast.makeText(this, "Press again to exit", Toast.LENGTH_LONG)
+            toast!!.show()
+            Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+        } else {
+            backPressFromOtherFragment()
         }
-        this.doubleBackToExitPressedOnce = true
-        toast!!.show()
-        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 }

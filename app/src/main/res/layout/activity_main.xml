@@ -7,111 +7,32 @@
     android:background="@color/white"
     tools:context=".activity.MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.08"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:contentInsetEnd="-1dp"
-        app:contentInsetStart="-1dp"
-        android:id="@+id/topCl">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/header_background"
-            android:contentDescription="@null" />
-
-
-        <TextView
-            android:id="@+id/student_name_text_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:fontFamily="sans-serif-medium"
-            android:maxLines="2"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintWidth_percent="0.43" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="@dimen/_15sdp"
-            android:src="@drawable/settings_icon"
-            app:layout_constraintBottom_toBottomOf="@+id/student_name_text_view"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.5"
-            android:contentDescription="@null"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.Toolbar>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomCl"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_2sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.12"
         app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.795" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline1"
-            android:layout_width="1px"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.41" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="1px"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.59" />
-
-        <ImageView
-            android:id="@+id/bottom_image_view"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/footer_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/bottom_recycler_view"
-            app:layout_constraintStart_toStartOf="@+id/bottom_recycler_view"
-            android:contentDescription="@null"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bottom_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_height="@dimen/_48sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bottom_image_view"
-            android:orientation="horizontal"/>
+            android:paddingTop="@dimen/_2sdp"
+            android:paddingBottom="@dimen/_2sdp"
+            android:background="@drawable/ic_rectangle_gradient_background"/>
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintBottom_toBottomOf="@+id/guideline"
+            app:layout_constraintWidth_percent="0.2"
+            app:layout_constraintTop_toTopOf="@+id/bottom_recycler_view"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_recycler_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/circle_white_black_stroke"
             android:padding="@dimen/_14sdp"
             android:src="@drawable/plus"
@@ -126,5 +47,5 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomCl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topCl" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

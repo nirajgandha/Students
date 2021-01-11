@@ -20,11 +20,36 @@ public interface APIInterface {
 
     @FormUrlEncoded
     @POST(ServerConfig.GET_STUDENT_LIST_API)
-    Call<StudentListResponse> getStudentListApi(@Field("phone") String phone);
+    Call<GetStudentListResponse> getStudentListApi(@Field("phone") String phone);
 
     @FormUrlEncoded
     @POST(ServerConfig.SELECT_STUDENT_API)
-    Call<StudentListResponse> selectStudentApi(@Field("phone") String phone,
-                                               @Field("student_id") String student_id);
+    Call<SelectStudentResponse> selectStudentApi(@Field("phone") String phone,
+                                                  @Field("student_id") String student_id);
+
+    @FormUrlEncoded
+    @POST(ServerConfig.HOME_WORK_LIST_API)
+    Call<GetHomeworkResponse> getHomeWorkListApi(@Field("class_id") String class_id,
+                                                   @Field("section_id") String section_id,
+                                                  @Field("student_id") String student_id);
+    @FormUrlEncoded
+    @POST(ServerConfig.GET_ATTENDANCE_LIST_API)
+    Call<AttendanceListResponse> getAttendanceListApi(@Field("class_id") String class_id,
+                                                   @Field("section_id") String section_id,
+                                                   @Field("student_id") String student_id,
+                                                   @Field("current_year") String current_year);
+
+    @FormUrlEncoded
+    @POST(ServerConfig.GET_SYLLABUS_LIST_API)
+    Call<GetSyllabusResponse> getSyllabusListApi(@Field("class_id") String class_id,
+                                                   @Field("section_id") String section_id);
+
+    @FormUrlEncoded
+    @POST(ServerConfig.GET_NOTICE_LIST_API)
+    Call<NoticeResponse> getNoticeListApi(@Field("student_id") String student_id);
+
+    @FormUrlEncoded
+    @POST(ServerConfig.GET_FOOD_MENU_LIST_API)
+    Call<FoodMenuResponse> getFoodMenuListApi(@Field("student_id") String student_id);
 
 }

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import kotlin.math.min
 
-class SpanningLinearLayoutManager(context: Context, var itemCounts: Int) : LinearLayoutManager(context) {
+class SpanningLinearLayoutManager(context: Context, var maxItemCounts: Int) : LinearLayoutManager(context) {
     private var setScrollHorizontally = false
 
     override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
@@ -35,7 +35,7 @@ class SpanningLinearLayoutManager(context: Context, var itemCounts: Int) : Linea
         return layoutParams
     }
 
-    private val maxItemCount: Int get() = min(itemCount, itemCount)
+    private val maxItemCount: Int get() = min(itemCount, maxItemCounts)
 
     override fun canScrollVertically(): Boolean {
         return false
@@ -53,6 +53,6 @@ class SpanningLinearLayoutManager(context: Context, var itemCounts: Int) : Linea
     }
 
     fun setMaxItemsToShowInScreen(itemCount: Int) {
-        this.itemCounts = itemCount
+        this.maxItemCounts = itemCount
     }
 }

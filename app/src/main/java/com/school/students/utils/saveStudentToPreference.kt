@@ -1,10 +1,11 @@
 package com.school.students.utils
 
 import android.content.Context
+import com.school.students.model.SelectStudent
 import com.school.students.model.Student
 
 object saveStudentToPreference {
-    fun saveStudentPreference(context: Context, student: Student){
+    fun saveStudentPreference(context: Context, student: SelectStudent){
         val preference: Preference = Preference(context)
         preference.setString(preference.ID, student.id)
         preference.setString(preference.PARENT_ID, student.parentId)
@@ -30,5 +31,7 @@ object saveStudentToPreference {
         preference.setString(preference.mother_name, student.motherName)
         preference.setString(preference.mother_phone, student.motherPhone)
         preference.setString(preference.sibling_id, student.siblingId)
+        preference.setString(preference.class_id, student.classId)
+        preference.setString(preference.section_id, student.sectionId)
     }
 }
