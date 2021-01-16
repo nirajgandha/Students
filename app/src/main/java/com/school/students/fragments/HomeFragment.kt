@@ -41,10 +41,10 @@ class HomeFragment : Fragment() {
         binding.noticeBoardCl.setOnClickListener { (requireActivity() as MainActivity).onItemClick(getString(R.string.menu_notice)) }
         binding.syllabusCl.setOnClickListener { (requireActivity() as MainActivity).openOtherFragment(SyllabusFragment()) }
         binding.feeCl.setOnClickListener { (requireActivity() as MainActivity).onItemClick(getString(R.string.menu_fee)) }
-//        binding.calendarCl.setOnClickListener { (requireActivity() as MainActivity).openOtherFragment() }
+        binding.calendarCl.setOnClickListener { (requireActivity() as MainActivity).openOtherFragment(CalendarFragment()) }
 //        binding.toDoActivityCl.setOnClickListener { (requireActivity() as MainActivity).openOtherFragment(AttendanceFragment()) }
 //        binding.galleryCl.setOnClickListener { (requireActivity() as MainActivity).openOtherFragment(AttendanceFragment()) }
-//        binding.coCurriculumActivityCl.setOnClickListener { (requireActivity() as MainActivity).openOtherFragment(AttendanceFragment()) }
+        binding.coCurriculumActivityCl.setOnClickListener { (requireActivity() as MainActivity).openOtherFragment(CoCurriculumFragment()) }
         binding.foodMenuCl.setOnClickListener { (requireActivity() as MainActivity).openOtherFragment(FoodMenuFragment()) }
 //        binding.leaveRequestCl.setOnClickListener { (requireActivity() as MainActivity).openOtherFragment(AttendanceFragment()) }
     }

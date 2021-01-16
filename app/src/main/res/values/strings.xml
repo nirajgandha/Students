@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Students</string>
+    <string name="app_name">NYALKARAN STUDENT</string>
     <!--Bottom Navigation Bar Strings-->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_home">Home</string>
@@ -102,4 +102,7 @@
     <string name="notice_found_successful">Notice detail has been found successfully.</string>
     <string name="title_food_menu">Food Menu</string>
     <string name="food_menu_found_successful">Food Menu detail has been found successfully.</string>
+    <string name="co_curriculum_activity">Co-Curriculum Activity</string>
+    <string name="activity_found_successful">Activities detail has been found successfully.</string>
+    <string name="events_found_successfully">Events detail has been found successfully.</string>
 </resources>

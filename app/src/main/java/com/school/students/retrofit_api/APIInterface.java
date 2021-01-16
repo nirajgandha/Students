@@ -52,4 +52,20 @@ public interface APIInterface {
     @POST(ServerConfig.GET_FOOD_MENU_LIST_API)
     Call<FoodMenuResponse> getFoodMenuListApi(@Field("student_id") String student_id);
 
+    @FormUrlEncoded
+    @POST(ServerConfig.GET_CO_CURRICULUM_ACTIVITY_LIST_API)
+    Call<CoCurriculumResponse> getCoActivityListApi(@Field("class_id") String class_id);
+
+    @FormUrlEncoded
+    @POST(ServerConfig.GET_EVENT_LIST_API)
+    Call<CalendarResponse> getCalendarListApi(@Field("class_id") String class_id,
+                                                      @Field("section_id") String section_id,
+                                                      @Field("start_date_of_month") String start_date_of_month);
+
+    @FormUrlEncoded
+    @POST(ServerConfig.GET_EVENT_LIST_API)
+    Call<CalendarResponse> getCalendarDayListApi(@Field("class_id") String class_id,
+                                              @Field("section_id") String section_id,
+                                              @Field("selected_date") String selected_date);
+
 }

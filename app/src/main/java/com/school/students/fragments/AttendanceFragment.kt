@@ -3,11 +3,9 @@ package com.school.students.fragments
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.school.students.R
@@ -57,9 +55,6 @@ class AttendanceFragment : Fragment() {
             override fun onChange() {
                 val date = binding.calendarView.getHeaderName()
                 val currentYear = date.split(" ")[2]
-                for (str in date.split(" ")) {
-                    Log.d("niraj", "onChange: $str")
-                }
                 if (currentYear != year) {
                     year = currentYear
                     callGetAttendanceList(year)
