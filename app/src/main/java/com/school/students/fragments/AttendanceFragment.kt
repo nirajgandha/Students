@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.school.students.R
+import com.school.students.activity.MainActivity
 import com.school.students.customui.materialcalendarview.EventDay
 import com.school.students.customui.materialcalendarview.listeners.OnCalendarPageChangeListener
 import com.school.students.databinding.FragmentAttendanceBinding
@@ -39,7 +40,8 @@ class AttendanceFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         _binding = FragmentAttendanceBinding.inflate(inflater)
-        binding.backNavigation.setOnClickListener { requireActivity().onBackPressed() }
+        binding.imgSettings.setOnClickListener { (requireActivity() as MainActivity).startSettingsActivity() }
+        binding.backNavigation.setOnClickListener { (requireActivity() as MainActivity).onBackPressed() }
         return binding.root
     }
 

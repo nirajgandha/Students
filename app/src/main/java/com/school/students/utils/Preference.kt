@@ -40,6 +40,7 @@ class Preference(context: Context) {
     val sibling_id = "sibling_id"
     val class_id = "class_id"
     val section_id = "section_id"
+    val loginId = "loginId"
 
     /**
      * Shared Preference instance

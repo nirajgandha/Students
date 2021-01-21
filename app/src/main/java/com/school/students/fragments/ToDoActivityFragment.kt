@@ -15,13 +15,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.school.students.R
 import com.school.students.activity.MainActivity
-import com.school.students.adapter.NoticeAdapter
-import com.school.students.databinding.FragmentNoticeBinding
-import com.school.students.databinding.HomeworkDialogLayoutBinding
-import com.school.students.databinding.NoticeDialogLayoutBinding
-import com.school.students.interfaces.NoticeClickListener
-import com.school.students.model.Notice
-import com.school.students.model.NoticeResponse
+import com.school.students.adapter.ToDoActivityAdapter
+import com.school.students.databinding.FragmentToDoActivityBinding
+import com.school.students.databinding.ToDoActivityDialogLayoutBinding
+import com.school.students.interfaces.ToDoClickListener
+import com.school.students.model.ToDoActivityResponse
+import com.school.students.model.ToDoActivityItem
 import com.school.students.retrofit_api.APIClient
 import com.school.students.retrofit_api.APIInterface
 import com.school.students.utils.Preference
@@ -31,12 +30,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class NoticeFragment : Fragment(), NoticeClickListener {
+class ToDoActivityFragment : Fragment(), ToDoClickListener {
 
-    private var _binding : FragmentNoticeBinding? = null
+    private var _binding : FragmentToDoActivityBinding? = null
     private val binding get() = _binding!!
     private var preference: Preference? = null
-    private val noticeClickListener: NoticeClickListener = this
+    private val toDoClickListener: ToDoClickListener = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +44,7 @@ class NoticeFragment : Fragment(), NoticeClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        _binding = FragmentNoticeBinding.inflate(inflater)
+        _binding = FragmentToDoActivityBinding.inflate(inflater)
         binding.imgSettings.setOnClickListener { (requireActivity() as MainActivity).startSettingsActivity() }
         binding.backNavigation.setOnClickListener { (requireActivity() as MainActivity).onBackPressed() }
         return binding.root
@@ -54,23 +53,23 @@ class NoticeFragment : Fragment(), NoticeClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val linearLayoutManager = LinearLayoutManager(requireContext())
-        binding.noticeRecyclerview.layoutManager = linearLayoutManager
-        callGetNoticeList()
+        binding.activityRecyclerview.layoutManager = linearLayoutManager
+        callGetActivityList()
     }
 
-    private fun callGetNoticeList() {
+    private fun callGetActivityList() {
         Utils.showProgress(requireContext())
         val apiInterface = APIClient.getClient().create(APIInterface::class.java)
         val studentId = preference!!.getString(preference!!.ID, "")
-        val noticeapi: Call<NoticeResponse> = apiInterface.getNoticeListApi(studentId)
-        noticeapi.enqueue(object : Callback<NoticeResponse> {
-            override fun onResponse(call: Call<NoticeResponse>, response: Response<NoticeResponse>) {
+        apiInterface.getActivityListApi(studentId)
+                .enqueue(object : Callback<ToDoActivityResponse> {
+            override fun onResponse(call: Call<ToDoActivityResponse>, response: Response<ToDoActivityResponse>) {
                 Utils.hideProgress()
                 val body = response.body()
                 if (body != null) {
                     val meta = body.meta
-                    if (meta.message.equals(getString(R.string.notice_found_successful), true)) {
-                        binding.noticeRecyclerview.adapter = NoticeAdapter(body.data, noticeClickListener, requireContext())
+                    if (meta.message.equals(getString(R.string.activity_found_successful), true)) {
+                        binding.activityRecyclerview.adapter = ToDoActivityAdapter(body.data, toDoClickListener, requireContext())
                     } else {
                         showError(meta.message)
                     }
@@ -79,7 +78,7 @@ class NoticeFragment : Fragment(), NoticeClickListener {
                 }
             }
 
-            override fun onFailure(call: Call<NoticeResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ToDoActivityResponse>, t: Throwable) {
                 Utils.hideProgress()
                 showError("Error occurred!! Please try again later")
                 t.printStackTrace()
@@ -93,19 +92,20 @@ class NoticeFragment : Fragment(), NoticeClickListener {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun onViewClicked(notice: Notice) {
+    override fun onViewClicked(toDoActivityItem: ToDoActivityItem) {
         val builder = AlertDialog.Builder(requireContext());
         // set the custom layout
-        val dialogBinding = NoticeDialogLayoutBinding.inflate(layoutInflater)
+        val dialogBinding = ToDoActivityDialogLayoutBinding.inflate(layoutInflater)
         builder.setView(dialogBinding.root)
         dialogBinding.bgImg.clipToOutline = true
-        val fromHtml = Html.fromHtml(notice.title, Html.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH)
+        val fromHtml = Html.fromHtml(toDoActivityItem.description, Html.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH)
         var end = fromHtml.indexOf("\n", fromHtml.length-4)
         if (end == -1)
             end = fromHtml.length
-        dialogBinding.title.text = fromHtml.subSequence(0, end)
-        dialogBinding.publishDate.text = notice.publishDate
-        dialogBinding.message.text = notice.message
+        dialogBinding.title.text = toDoActivityItem.title
+        dialogBinding.date.text = getString(R.string.date_s, toDoActivityItem.date)
+        dialogBinding.description.text = getString(R.string.description, fromHtml.subSequence(0, end))
+        dialogBinding.instruction.text = getString(R.string.description, toDoActivityItem.instruction)
 
         // create and show the alert dialog
         val dialog = builder.create();

@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".StudentsApplication"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:fullBackupOnly="false"
@@ -25,6 +26,7 @@
         <activity android:name=".activity.OtpActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.SlideShowActivity" />
     </application>
 
 </manifest>

@@ -27,12 +27,12 @@
 
             <ImageView
                 android:id="@+id/back_navigation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintHeight_percent="0.5"
                 android:src="@drawable/ic_back_arrow"
-                android:paddingTop="@dimen/_14sdp"
-                android:paddingBottom="@dimen/_14sdp"
-                android:layout_marginStart="@dimen/_10sdp"
+android:layout_marginStart="@dimen/_7sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="W,1.5:1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,12 +48,25 @@
                 android:maxLines="1"
                 android:text="@string/str_syllabus"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_23ssp"
-                android:layout_marginStart="@dimen/_10sdp"
+                android:textSize="@dimen/_21ssp"
                 android:includeFontPadding="false"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/back_navigation" />
+                app:layout_constraintStart_toEndOf="@+id/back_navigation"
+                app:layout_constraintEnd_toStartOf="@+id/img_settings"/>
+
+            <ImageView
+                android:id="@+id/img_settings"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.6"
+                app:layout_constraintDimensionRatio="1:1"
+                android:layout_marginEnd="@dimen/_7sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/settings_icon"
+                android:contentDescription="@null"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 

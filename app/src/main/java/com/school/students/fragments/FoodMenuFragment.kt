@@ -2,6 +2,8 @@ package com.school.students.fragments
 
 import android.app.DownloadManager
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -10,11 +12,13 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.school.students.R
+import com.school.students.activity.MainActivity
 import com.school.students.adapter.FoodMenuAdapter
 import com.school.students.databinding.FoodMenuDialogLayoutBinding
 import com.school.students.databinding.FragmentFoodMenuBinding
@@ -47,7 +51,8 @@ class FoodMenuFragment : Fragment(), FoodMenuClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         _binding = FragmentFoodMenuBinding.inflate(inflater)
-        binding.backNavigation.setOnClickListener { requireActivity().onBackPressed() }
+        binding.imgSettings.setOnClickListener { (requireActivity() as MainActivity).startSettingsActivity() }
+        binding.backNavigation.setOnClickListener { (requireActivity() as MainActivity).onBackPressed() }
         return binding.root
     }
 
@@ -98,6 +103,7 @@ class FoodMenuFragment : Fragment(), FoodMenuClickListener {
         // set the custom layout
         val dialogBinding = FoodMenuDialogLayoutBinding.inflate(layoutInflater)
         builder.setView(dialogBinding.root)
+        dialogBinding.bgImg.clipToOutline = true
         val fromHtml = Html.fromHtml(foodMenu.title, Html.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH)
         var end = fromHtml.indexOf("\n", fromHtml.length-4)
         if (end == -1)
@@ -108,12 +114,14 @@ class FoodMenuFragment : Fragment(), FoodMenuClickListener {
         if (end1 == -1)
             end1 = fromHtml1.length
         dialogBinding.message.text = fromHtml1.subSequence(0, end1)
-        // add a button
-        builder.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+
         // create and show the alert dialog
         val dialog = builder.create();
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
+        dialogBinding.txtClose.setOnClickListener { if (dialog.isShowing) dialog.dismiss() }
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
     }
 

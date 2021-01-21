@@ -2,6 +2,8 @@ package com.school.students.fragments
 
 import android.app.DownloadManager
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.InsetDrawable
 import android.net.Uri
@@ -12,18 +14,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.school.students.R
+import com.school.students.activity.MainActivity
 import com.school.students.adapter.CalendarAdapter
 import com.school.students.customui.materialcalendarview.EventDay
 import com.school.students.customui.materialcalendarview.getDatesRange
 import com.school.students.customui.materialcalendarview.listeners.OnCalendarPageChangeListener
 import com.school.students.customui.materialcalendarview.listeners.OnDayClickListener
 import com.school.students.customui.materialcalendarview.utils.EventImage
+import com.school.students.databinding.CalendarDialogLayoutBinding
 import com.school.students.databinding.FragmentAttendanceBinding
 import com.school.students.databinding.FragmentCalendarBinding
 import com.school.students.databinding.NoticeDialogLayoutBinding
@@ -62,7 +67,8 @@ class CalendarFragment : Fragment(), CalendarItemClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         _binding = FragmentCalendarBinding.inflate(inflater)
-        binding.backNavigation.setOnClickListener { requireActivity().onBackPressed() }
+        binding.backNavigation.setOnClickListener { (requireActivity() as MainActivity).onBackPressed() }
+        binding.imgSettings.setOnClickListener { (requireActivity() as MainActivity).startSettingsActivity() }
         return binding.root
     }
 
@@ -254,21 +260,23 @@ class CalendarFragment : Fragment(), CalendarItemClickListener {
     override fun onViewClicked(calendarItem: CalendarItem) {
         val builder = AlertDialog.Builder(requireContext());
         // set the custom layout
-        val dialogBinding = NoticeDialogLayoutBinding.inflate(layoutInflater)
+        val dialogBinding = CalendarDialogLayoutBinding.inflate(layoutInflater)
         builder.setView(dialogBinding.root)
+        dialogBinding.bgImg.clipToOutline = true
         dialogBinding.title.text = calendarItem.eventTitle
-        dialogBinding.publishDate.text = if (calendarItem.fromDate == calendarItem.toDate){
+        dialogBinding.date.text = if (calendarItem.fromDate == calendarItem.toDate){
             "Date: ${calendarItem.fromDate}"
         } else {
             "Date: ${calendarItem.fromDate} to ${calendarItem.toDate}"
         }
         dialogBinding.message.text = calendarItem.eventNotificationMessage
-        // add a button
-        builder.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
         // create and show the alert dialog
         val dialog = builder.create();
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
+        dialogBinding.txtClose.setOnClickListener { if (dialog.isShowing) dialog.dismiss() }
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
     }
 

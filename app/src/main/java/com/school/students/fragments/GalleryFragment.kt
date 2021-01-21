@@ -1,5 +1,6 @@
 package com.school.students.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.school.students.R
 import com.school.students.activity.MainActivity
+import com.school.students.activity.SlideShowActivity
 import com.school.students.adapter.CoCurriculumAdapter
-import com.school.students.databinding.FragmentCoCurriculumBinding
+import com.school.students.adapter.GalleryAdapter
+import com.school.students.databinding.FragmentGalleryBinding
+import com.school.students.interfaces.GalleryClickListener
 import com.school.students.model.CoCurriculumResponse
+import com.school.students.model.GalleryItem
+import com.school.students.model.GalleryResponse
 import com.school.students.retrofit_api.APIClient
 import com.school.students.retrofit_api.APIInterface
 import com.school.students.utils.Preference
@@ -20,11 +26,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class CoCurriculumFragment : Fragment() {
+class GalleryFragment : Fragment(), GalleryClickListener {
 
-    private var _binding : FragmentCoCurriculumBinding? = null
+    private var _binding : FragmentGalleryBinding? = null
     private val binding get() = _binding!!
     private var preference: Preference? = null
+    private val galleryClickListener: GalleryClickListener = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +40,7 @@ class CoCurriculumFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        _binding = FragmentCoCurriculumBinding.inflate(inflater)
+        _binding = FragmentGalleryBinding.inflate(inflater)
         binding.imgSettings.setOnClickListener { (requireActivity() as MainActivity).startSettingsActivity() }
         binding.backNavigation.setOnClickListener { (requireActivity() as MainActivity).onBackPressed() }
         return binding.root
@@ -42,23 +49,23 @@ class CoCurriculumFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val gridLayoutManager = GridLayoutManager(requireContext(), 2)
-        binding.coactivityRecyclerview.layoutManager = gridLayoutManager
-        callCoCurriculumList()
+        binding.galleryRecyclerview.layoutManager = gridLayoutManager
+        callGalleryList()
     }
 
-    private fun callCoCurriculumList() {
+    private fun callGalleryList() {
         Utils.showProgress(requireContext())
         val apiInterface = APIClient.getClient().create(APIInterface::class.java)
-        val classId = preference!!.getString(preference!!.class_id, "")
-        val loginApi: Call<CoCurriculumResponse> = apiInterface.getCoActivityListApi(classId)
-        loginApi.enqueue(object : Callback<CoCurriculumResponse> {
-            override fun onResponse(call: Call<CoCurriculumResponse>, response: Response<CoCurriculumResponse>) {
+        val studentId = preference!!.getString(preference!!.ID, "")
+        apiInterface.getGalleryListApi(studentId)
+                .enqueue(object : Callback<GalleryResponse> {
+            override fun onResponse(call: Call<GalleryResponse>, response: Response<GalleryResponse>) {
                 Utils.hideProgress()
                 val body = response.body()
                 if (body != null) {
                     val meta = body.meta
-                    if (meta.message.equals(getString(R.string.activity_found_successful), true)) {
-                       binding.coactivityRecyclerview.adapter = CoCurriculumAdapter(body.data, requireContext())
+                    if (meta.message.equals(getString(R.string.gallery_found_successful), true)) {
+                       binding.galleryRecyclerview.adapter = GalleryAdapter(body.data, galleryClickListener, requireContext())
                     } else {
                         showError(meta.message)
                     }
@@ -67,7 +74,7 @@ class CoCurriculumFragment : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<CoCurriculumResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GalleryResponse>, t: Throwable) {
                 Utils.hideProgress()
                 showError("Error occurred!! Please try again later")
                 t.printStackTrace()
@@ -78,5 +85,11 @@ class CoCurriculumFragment : Fragment() {
 
     private fun showError(string: String) {
         Utils.showSnackBar(binding.root, string, requireContext()).show()
+    }
+
+    override fun onItemClick(galleryItem: GalleryItem) {
+        val intent = Intent(requireContext(), SlideShowActivity::class.java)
+        intent.putStringArrayListExtra(getString(R.string.galleryImagesUrlList), galleryItem.images)
+        startActivity(intent)
     }
 }

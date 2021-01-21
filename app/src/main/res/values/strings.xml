@@ -40,7 +40,7 @@
     <string name="str_syllabus">syllabus</string>
     <string name="str_fee">fee</string>
     <string name="str_calender">calender</string>
-    <string name="str_to_do_activity">to do activity</string>
+    <string name="str_to_do_activity">activity</string>
     <string name="str_gallery">gallery</string>
     <string name="str_co_curriculum_activity">co-curriculum activity</string>
     <string name="str_food_menu">food menu</string>
@@ -55,6 +55,7 @@
     <string name="str_view">View</string>
     <string name="title_homework">Homework</string>
     <string name="attendance">Attendance</string>
+    <string name="calendar">Calendar</string>
 
 
     <string name="material_calendar_monday">Mon</string>
@@ -93,16 +94,25 @@
     <string name="material_calendar_today_button">Today</string>
     <string name="material_calendar_positive_button">OK</string>
     <string name="material_calendar_negative_button">Cancel</string>
-    <string name="homework_found_successful">Student Homework detail has been found successfully.</string>
     <string name="str_absent">Absent</string>
     <string name="str_present">Present</string>
-    <string name="attendance_found_successfully">Student Attandance detail has been found successfully.</string>
     <string name="date_s">Date %s</string>
+    <string name="title_food_menu">Food Menu</string>
+    <string name="co_curriculum_activity">Co-Curriculum Activity</string>
+    <string name="gallery">Gallery</string>
+    <string name="activity">Activity</string>
+
+    <!-- API Successful messages-->
+    <string name="homework_found_successful">Student Homework detail has been found successfully.</string>
+    <string name="attendance_found_successfully">Student Attandance detail has been found successfully.</string>
     <string name="syllabus_found_successful">Syllabus detail has been found successfully.</string>
     <string name="notice_found_successful">Notice detail has been found successfully.</string>
-    <string name="title_food_menu">Food Menu</string>
     <string name="food_menu_found_successful">Food Menu detail has been found successfully.</string>
-    <string name="co_curriculum_activity">Co-Curriculum Activity</string>
     <string name="activity_found_successful">Activities detail has been found successfully.</string>
     <string name="events_found_successfully">Events detail has been found successfully.</string>
+    <string name="homework_upload_successful">Student Homework has been uploaded successfully.</string>
+    <string name="gallery_found_successful">Gallery detail has been found successfully.</string>
+    <string name="galleryImagesUrlList">galleryImagesUrlList</string>
+    <string name="description">Description:\n%s</string>
+    <string name="instruction">Instructions:\n%s</string>
 </resources>

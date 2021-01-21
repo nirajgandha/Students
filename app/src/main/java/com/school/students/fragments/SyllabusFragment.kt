@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.school.students.R
+import com.school.students.activity.MainActivity
 import com.school.students.adapter.HomeworkAdapter
 import com.school.students.adapter.SyllabusAdapter
 import com.school.students.databinding.FragmentSyllabusBinding
@@ -45,7 +46,8 @@ class SyllabusFragment : Fragment(), SyllabusClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         _binding = FragmentSyllabusBinding.inflate(inflater)
-        binding.backNavigation.setOnClickListener { requireActivity().onBackPressed() }
+        binding.imgSettings.setOnClickListener { (requireActivity() as MainActivity).startSettingsActivity() }
+        binding.backNavigation.setOnClickListener { (requireActivity() as MainActivity).onBackPressed() }
         return binding.root
     }
 

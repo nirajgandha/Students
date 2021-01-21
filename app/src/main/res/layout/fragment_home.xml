@@ -44,14 +44,16 @@
                 app:layout_constraintWidth_percent="0.43" />
 
             <ImageView
+                android:id="@+id/img_settings"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:src="@drawable/settings_icon"
-                app:layout_constraintBottom_toBottomOf="@+id/student_name_text_view"
+                app:layout_constraintHeight_percent="0.6"
                 app:layout_constraintDimensionRatio="1:1"
+                android:layout_marginEnd="@dimen/_7sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.5"
+                android:src="@drawable/settings_icon"
                 android:contentDescription="@null"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
@@ -60,13 +62,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/topCl"
-        android:layout_marginTop="@dimen/_4sdp">
+        android:layout_marginTop="@dimen/_4sdp"
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:layout_marginBottom="@dimen/_4sdp">
+            android:layout_marginTop="@dimen/_4sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/firstLine_cl"
@@ -475,7 +477,7 @@
                 android:layout_marginStart="@dimen/_49sdp"
                 android:layout_marginEnd="@dimen/_49sdp"
                 android:layout_marginTop="@dimen/_4sdp"
-                android:layout_marginBottom="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_99sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/thirdLine_cl"
@@ -526,6 +528,7 @@
                     android:layout_height="@dimen/home_item_width"
                     android:background="@drawable/white_rectangle_rounded_background"
                     android:elevation="@dimen/_3sdp"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/foodMenu_cl"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"

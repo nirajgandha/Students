@@ -2,7 +2,9 @@ package com.school.students.retrofit_api;
 
 import com.school.students.model.*;
 
+import okhttp3.*;
 import retrofit2.*;
+import retrofit2.Call;
 import retrofit2.http.*;
 
 public interface APIInterface {
@@ -68,4 +70,17 @@ public interface APIInterface {
                                               @Field("section_id") String section_id,
                                               @Field("selected_date") String selected_date);
 
+    @Multipart
+    @POST(ServerConfig.UPLOAD_HOMEWORK_API)
+    Call<UploadHomeworkResponse> uploadHomeworkApi(@Part("student_id") RequestBody student_id,
+                                             @Part("homework_id") RequestBody homework_id,
+                                             @Part MultipartBody.Part[] uploadFiles);
+
+    @FormUrlEncoded
+    @POST(ServerConfig.GET_GALLERY_API)
+    Call<GalleryResponse> getGalleryListApi(@Field("student_id") String student_id);
+
+    @FormUrlEncoded
+    @POST(ServerConfig.GET_ACTIVITY_API)
+    Call<ToDoActivityResponse> getActivityListApi(@Field("student_id") String student_id);
 }

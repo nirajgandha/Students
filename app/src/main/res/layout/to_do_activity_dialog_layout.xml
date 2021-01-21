@@ -43,7 +43,7 @@
             android:layout_marginBottom="@dimen/_20sdp">
 
             <TextView
-                android:id="@+id/publish_date"
+                android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/date_s"
@@ -56,15 +56,28 @@
                 android:layout_marginTop="@dimen/_10sdp"/>
 
             <TextView
-                android:id="@+id/message"
+                android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Message"
+                android:text="@string/description"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:fontFamily="@font/aller_std_regular"
                 android:textSize="@dimen/_12ssp"
-                app:layout_constraintTop_toBottomOf="@+id/publish_date"
+                app:layout_constraintTop_toBottomOf="@+id/date"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/instruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/instruction"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aller_std_regular"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintTop_toBottomOf="@+id/description"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/_10sdp" />
 
@@ -86,5 +99,4 @@
         android:textColor="@color/design_default_color_primary"
         android:fontFamily="@font/aller_std_bold"
         android:textSize="@dimen/_15ssp"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

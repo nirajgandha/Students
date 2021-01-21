@@ -13,4 +13,7 @@ public class ServerConfig {
     static final String GET_FOOD_MENU_LIST_API = "getFoodMenulist";
     static final String GET_CO_CURRICULUM_ACTIVITY_LIST_API = "coActivity";
     static final String GET_EVENT_LIST_API = "getEventslist";
+    static final String UPLOAD_HOMEWORK_API = "uploadHomework";
+    static final String GET_GALLERY_API = "getGallerylist";
+    static final String GET_ACTIVITY_API = "studentActivity";
 }

@@ -2,6 +2,7 @@ package com.school.students.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
@@ -35,6 +36,9 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         preference = Preference(this)
+        if (resources.configuration.orientation != Configuration.ORIENTATION_PORTRAIT){
+            requestedOrientation = Configuration.ORIENTATION_PORTRAIT
+        }
         _activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
         resumeFragment = getString(R.string.menu_home);
@@ -194,5 +198,13 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         } else {
             backPressFromOtherFragment()
         }
+    }
+
+    fun startSettingsActivity() {
+        val bundle = Bundle()
+        bundle.putString(getString(R.string.phone), preference!!.getString(preference!!.loginId, ""))
+        val intent = Intent(this, SelectStudentActivity::class.java)
+        intent.putExtra(getString(R.string.selectStudentBundle), bundle)
+        startActivity(intent)
     }
 }

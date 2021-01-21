@@ -59,8 +59,11 @@ class SelectStudentActivity : AppCompatActivity(), StudentSelectedListener {
                     val meta = body.meta
                     if (meta.message.equals(getString(R.string.student_selected_successfully), true)){
                         val data = body.data
+                        preference!!.setString(preference!!.loginId, phone)
                         saveStudentPreference(this@SelectStudentActivity, data[0])
-                        startActivity(Intent(this@SelectStudentActivity, MainActivity::class.java))
+                        val intent = Intent(this@SelectStudentActivity, MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        startActivity(intent)
                         finish()
                     } else {
                         showError(meta.message)
