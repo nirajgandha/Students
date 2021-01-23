@@ -34,13 +34,21 @@ class Preference(context: Context) {
     val father_name = "father_name"
     val father_phone = "father_phone"
     val father_occupation = "father_occupation"
+    val father_pic = "father_pic"
     val mother_name = "mother_name"
     val mother_phone = "mother_phone"
     val mother_occupation = "mother_occupation"
+    val mother_pic = "mother_pic"
+    val guardian_name = "guardian_name"
+    val guardian_phone = "guardian_phone"
+    val guardian_occupation = "guardian_occupation"
+    val guardian_pic = "guardian_pic"
     val sibling_id = "sibling_id"
     val class_id = "class_id"
     val section_id = "section_id"
     val loginId = "loginId"
+    val className = "className"
+    val sectionName = "sectionName"
 
     /**
      * Shared Preference instance

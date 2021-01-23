@@ -115,4 +115,6 @@
     <string name="galleryImagesUrlList">galleryImagesUrlList</string>
     <string name="description">Description:\n%s</string>
     <string name="instruction">Instructions:\n%s</string>
+    <string name="profile">Profile</string>
+    <string name="class_s">Class %s</string>
 </resources>

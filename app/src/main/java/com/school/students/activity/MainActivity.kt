@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         }
         _activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
-        resumeFragment = getString(R.string.menu_home);
+        resumeFragment = getString(R.string.menu_home)
+        activityMainBinding.plusButton.setOnClickListener { openOtherFragment(ProfileFragment()) }
         loadData()
     }
 

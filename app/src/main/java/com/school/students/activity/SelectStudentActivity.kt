@@ -1,6 +1,7 @@
 package com.school.students.activity
 
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -32,6 +33,9 @@ class SelectStudentActivity : AppCompatActivity(), StudentSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         preference = Preference(this)
+        if (resources.configuration.orientation != Configuration.ORIENTATION_PORTRAIT){
+            requestedOrientation = Configuration.ORIENTATION_PORTRAIT
+        }
         _binding = ActivitySelectStudentBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val bundleExtra = intent.getBundleExtra(getString(R.string.selectStudentBundle))!!

@@ -1,6 +1,7 @@
 package com.school.students.activity
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -28,6 +29,9 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (resources.configuration.orientation != Configuration.ORIENTATION_PORTRAIT){
+            requestedOrientation = Configuration.ORIENTATION_PORTRAIT
+        }
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getDeviceTokenFirebase()

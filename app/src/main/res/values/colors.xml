@@ -21,4 +21,5 @@
     <color name="defaultColor">#2962FF</color>
     <color name="absent">#8b0100</color>
     <color name="present">#018001</color>
+    <color name="profile_color">#024A60</color>
 </resources>

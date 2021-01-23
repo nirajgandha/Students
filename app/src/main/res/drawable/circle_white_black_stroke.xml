@@ -22,7 +22,7 @@
                 android:height="@dimen/_50sdp"/>
             <stroke
                 android:width="@dimen/_1sdp"
-                android:color="@color/black"/>
+                android:color="@android:color/darker_gray"/>
         </shape>
 
     </item>

@@ -1,6 +1,7 @@
 package com.school.students.activity
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,9 @@ class SlideShowActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (resources.configuration.orientation != Configuration.ORIENTATION_PORTRAIT){
+            requestedOrientation = Configuration.ORIENTATION_PORTRAIT
+        }
         _binding = ActivitySlideShowBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadData()

@@ -1,6 +1,7 @@
 package com.school.students.activity
 
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -20,6 +21,9 @@ class OtpActivity : AppCompatActivity() {
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (resources.configuration.orientation != Configuration.ORIENTATION_PORTRAIT){
+            requestedOrientation = Configuration.ORIENTATION_PORTRAIT
+        }
         _binding = ActivityOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val bundleExtra = intent.getBundleExtra(getString(R.string.otpBundle))!!

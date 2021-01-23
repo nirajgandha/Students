@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName;
 public class SelectStudent {
 
 	@SerializedName("previous_school")
-	private Object previousSchool;
+	private String previousSchool;
 
 	@SerializedName("mother_name")
 	private String motherName;
 
 	@SerializedName("measurement_date")
-	private Object measurementDate;
+	private String measurementDate;
 
 	@SerializedName("class_id")
 	private String classId;
@@ -20,13 +20,13 @@ public class SelectStudent {
 	private String mobileno;
 
 	@SerializedName("dis_reason")
-	private Object disReason;
+	private String disReason;
 
 	@SerializedName("permanent_address")
 	private String permanentAddress;
 
 	@SerializedName("dis_note")
-	private Object disNote;
+	private String disNote;
 
 	@SerializedName("cast")
 	private String cast;
@@ -41,31 +41,31 @@ public class SelectStudent {
 	private String id;
 
 	@SerializedName("state")
-	private Object state;
+	private String state;
 
 	@SerializedName("image")
 	private String image;
 
 	@SerializedName("pincode")
-	private Object pincode;
+	private String pincode;
 
 	@SerializedName("guardian_address")
-	private Object guardianAddress;
+	private String guardianAddress;
 
 	@SerializedName("father_pic")
-	private Object fatherPic;
+	private String fatherPic;
 
 	@SerializedName("weight")
-	private Object weight;
+	private String weight;
 
 	@SerializedName("annual_income_id")
 	private String annualIncomeId;
 
 	@SerializedName("guardian_pic")
-	private Object guardianPic;
+	private String guardianPic;
 
 	@SerializedName("deleted_at")
-	private Object deletedAt;
+	private String deletedAt;
 
 	@SerializedName("lastname")
 	private String lastname;
@@ -85,26 +85,23 @@ public class SelectStudent {
 	@SerializedName("blood_group")
 	private String bloodGroup;
 
-	@SerializedName("admission_no")
-	private Object admissionNo;
-
 	@SerializedName("mother_pic")
-	private Object motherPic;
+	private String motherPic;
 
 	@SerializedName("note")
-	private Object note;
+	private String note;
 
 	@SerializedName("firstname")
 	private String firstname;
 
 	@SerializedName("guardian_name")
-	private Object guardianName;
+	private String guardianName;
 
 	@SerializedName("gender")
 	private String gender;
 
 	@SerializedName("city")
-	private Object city;
+	private String city;
 
 	@SerializedName("mother_phone")
 	private String motherPhone;
@@ -116,7 +113,7 @@ public class SelectStudent {
 	private String motherOccupation;
 
 	@SerializedName("guardian_email")
-	private Object guardianEmail;
+	private String guardianEmail;
 
 	@SerializedName("GRNO")
 	private String gRNO;
@@ -137,48 +134,54 @@ public class SelectStudent {
 	private String rollNo;
 
 	@SerializedName("udid")
-	private Object udid;
+	private String udid;
 
 	@SerializedName("email")
 	private String email;
 
 	@SerializedName("rte")
-	private Object rte;
+	private String rte;
 
 	@SerializedName("father_occupation")
 	private String fatherOccupation;
 
 	@SerializedName("guardian_occupation")
-	private Object guardianOccupation;
+	private String guardianOccupation;
 
 	@SerializedName("is_active")
-	private Object isActive;
+	private String isActive;
 
 	@SerializedName("session_id")
 	private String sessionId;
 
 	@SerializedName("disable_at")
-	private Object disableAt;
+	private String disableAt;
 
 	@SerializedName("guardian_relation")
-	private Object guardianRelation;
+	private String guardianRelation;
 
 	@SerializedName("religion")
 	private String religion;
 
 	@SerializedName("app_key")
-	private Object appKey;
+	private String appKey;
 
 	@SerializedName("sibling_id")
 	private String siblingId;
 
 	@SerializedName("parent_app_key")
-	private Object parentAppKey;
+	private String parentAppKey;
 
 	@SerializedName("guardian_phone")
-	private Object guardianPhone;
+	private String guardianPhone;
 
-	public Object getPreviousSchool(){
+	@SerializedName("class_name")
+	private String className;
+
+	@SerializedName("section_name")
+	private String sectionName;
+
+	public String getPreviousSchool(){
 		return previousSchool;
 	}
 
@@ -186,7 +189,7 @@ public class SelectStudent {
 		return motherName;
 	}
 
-	public Object getMeasurementDate(){
+	public String getMeasurementDate(){
 		return measurementDate;
 	}
 
@@ -198,7 +201,7 @@ public class SelectStudent {
 		return mobileno;
 	}
 
-	public Object getDisReason(){
+	public String getDisReason(){
 		return disReason;
 	}
 
@@ -206,7 +209,7 @@ public class SelectStudent {
 		return permanentAddress;
 	}
 
-	public Object getDisNote(){
+	public String getDisNote(){
 		return disNote;
 	}
 
@@ -226,7 +229,7 @@ public class SelectStudent {
 		return id;
 	}
 
-	public Object getState(){
+	public String getState(){
 		return state;
 	}
 
@@ -234,19 +237,19 @@ public class SelectStudent {
 		return image;
 	}
 
-	public Object getPincode(){
+	public String getPincode(){
 		return pincode;
 	}
 
-	public Object getGuardianAddress(){
+	public String getGuardianAddress(){
 		return guardianAddress;
 	}
 
-	public Object getFatherPic(){
+	public String getFatherPic(){
 		return fatherPic;
 	}
 
-	public Object getWeight(){
+	public String getWeight(){
 		return weight;
 	}
 
@@ -254,11 +257,11 @@ public class SelectStudent {
 		return annualIncomeId;
 	}
 
-	public Object getGuardianPic(){
+	public String getGuardianPic(){
 		return guardianPic;
 	}
 
-	public Object getDeletedAt(){
+	public String getDeletedAt(){
 		return deletedAt;
 	}
 
@@ -286,15 +289,11 @@ public class SelectStudent {
 		return bloodGroup;
 	}
 
-	public Object getAdmissionNo(){
-		return admissionNo;
-	}
-
-	public Object getMotherPic(){
+	public String getMotherPic(){
 		return motherPic;
 	}
 
-	public Object getNote(){
+	public String getNote(){
 		return note;
 	}
 
@@ -302,7 +301,7 @@ public class SelectStudent {
 		return firstname;
 	}
 
-	public Object getGuardianName(){
+	public String getGuardianName(){
 		return guardianName;
 	}
 
@@ -310,7 +309,7 @@ public class SelectStudent {
 		return gender;
 	}
 
-	public Object getCity(){
+	public String getCity(){
 		return city;
 	}
 
@@ -326,7 +325,7 @@ public class SelectStudent {
 		return motherOccupation;
 	}
 
-	public Object getGuardianEmail(){
+	public String getGuardianEmail(){
 		return guardianEmail;
 	}
 
@@ -354,7 +353,7 @@ public class SelectStudent {
 		return rollNo;
 	}
 
-	public Object getUdid(){
+	public String getUdid(){
 		return udid;
 	}
 
@@ -362,7 +361,7 @@ public class SelectStudent {
 		return email;
 	}
 
-	public Object getRte(){
+	public String getRte(){
 		return rte;
 	}
 
@@ -370,11 +369,11 @@ public class SelectStudent {
 		return fatherOccupation;
 	}
 
-	public Object getGuardianOccupation(){
+	public String getGuardianOccupation(){
 		return guardianOccupation;
 	}
 
-	public Object getIsActive(){
+	public String getIsActive(){
 		return isActive;
 	}
 
@@ -382,11 +381,11 @@ public class SelectStudent {
 		return sessionId;
 	}
 
-	public Object getDisableAt(){
+	public String getDisableAt(){
 		return disableAt;
 	}
 
-	public Object getGuardianRelation(){
+	public String getGuardianRelation(){
 		return guardianRelation;
 	}
 
@@ -394,7 +393,7 @@ public class SelectStudent {
 		return religion;
 	}
 
-	public Object getAppKey(){
+	public String getAppKey(){
 		return appKey;
 	}
 
@@ -402,12 +401,20 @@ public class SelectStudent {
 		return siblingId;
 	}
 
-	public Object getParentAppKey(){
+	public String getParentAppKey(){
 		return parentAppKey;
 	}
 
-	public Object getGuardianPhone(){
+	public String getGuardianPhone(){
 		return guardianPhone;
+	}
+
+	public String getClassName() {
+		return className;
+	}
+
+	public String getSectionName() {
+		return sectionName;
 	}
 
 	@Override
@@ -440,8 +447,7 @@ public class SelectStudent {
 			",father_name = '" + fatherName + '\'' + 
 			",parent_id = '" + parentId + '\'' + 
 			",dob = '" + dob + '\'' + 
-			",blood_group = '" + bloodGroup + '\'' + 
-			",admission_no = '" + admissionNo + '\'' + 
+			",blood_group = '" + bloodGroup + '\'' +
 			",mother_pic = '" + motherPic + '\'' + 
 			",note = '" + note + '\'' + 
 			",firstname = '" + firstname + '\'' + 
@@ -472,6 +478,8 @@ public class SelectStudent {
 			",sibling_id = '" + siblingId + '\'' + 
 			",parent_app_key = '" + parentAppKey + '\'' + 
 			",guardian_phone = '" + guardianPhone + '\'' + 
+			",class_name = '" + className + '\'' +
+			",section_name = '" + sectionName + '\'' +
 			"}";
 		}
 }
