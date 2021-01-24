@@ -111,7 +111,8 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp">
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:layout_constraintWidth_percent="0.65">
 
                 <TextView
                     android:id="@+id/student_name_text_view"
@@ -279,7 +280,8 @@
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_10sdp"
-                            android:paddingBottom="@dimen/_10sdp">
+                            android:paddingBottom="@dimen/_10sdp"
+                            app:layout_constraintWidth_percent="0.62">
 
                             <ImageView
                                 android:layout_width="@dimen/_18sdp"
@@ -337,11 +339,12 @@
 
                             <TextView
                                 android:id="@+id/father_businness"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintTop_toTopOf="@+id/ic_businness_father"
                                 app:layout_constraintStart_toEndOf="@+id/ic_businness_father"
                                 app:layout_constraintBottom_toBottomOf="@+id/ic_businness_father"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 android:gravity="start"
                                 android:text="1234567890"
                                 android:textSize="@dimen/_16ssp"
@@ -407,7 +410,8 @@
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_10sdp"
-                            android:paddingBottom="@dimen/_10sdp">
+                            android:paddingBottom="@dimen/_10sdp"
+                            app:layout_constraintWidth_percent="0.62">
 
                             <ImageView
                                 android:layout_width="@dimen/_18sdp"
@@ -466,10 +470,12 @@
                             <TextView
                                 android:id="@+id/mother_businness"
                                 android:layout_height="wrap_content"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 app:layout_constraintTop_toTopOf="@+id/ic_businness_mother"
                                 app:layout_constraintStart_toEndOf="@+id/ic_businness_mother"
                                 app:layout_constraintBottom_toBottomOf="@+id/ic_businness_mother"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:gravity="start"
                                 android:text="1234567890"
                                 android:textSize="@dimen/_16ssp"
                                 android:fontFamily="@font/aller_std_regular"
@@ -532,7 +538,8 @@
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_10sdp"
-                            android:paddingBottom="@dimen/_10sdp">
+                            android:paddingBottom="@dimen/_10sdp"
+                            app:layout_constraintWidth_percent="0.62">
 
                             <ImageView
                                 android:layout_width="@dimen/_18sdp"
@@ -590,13 +597,14 @@
 
                             <TextView
                                 android:id="@+id/guardian_businness"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintTop_toTopOf="@+id/ic_businness_guardian"
                                 app:layout_constraintStart_toEndOf="@+id/ic_businness_guardian"
                                 app:layout_constraintBottom_toBottomOf="@+id/ic_businness_guardian"
                                 android:text="1234567890"
                                 android:textSize="@dimen/_16ssp"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 android:fontFamily="@font/aller_std_regular"
                                 android:textColor="@color/profile_color"
                                 android:layout_marginStart="@dimen/_5sdp"/>

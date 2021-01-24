@@ -5,7 +5,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.marginBottom
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.school.students.R
@@ -27,6 +29,9 @@ class HomeworkAdapter(private var homework: ArrayList<Homework>, private val hom
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder){
             with(homework[position]){
+                if (position == homework.size - 1){
+                    (homeWorkRecyclerViewItemBinding.root.layoutParams as RecyclerView.LayoutParams).bottomMargin = 100
+                }
                 homeWorkRecyclerViewItemBinding.subject.text = subjectName
                 homeWorkRecyclerViewItemBinding.classNumber.text = context.resources.getString(R.string.str_class_section, "$className$sectionName")
                 homeWorkRecyclerViewItemBinding.createdOnValue.text = homeworkDate

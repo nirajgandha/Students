@@ -24,6 +24,9 @@ class SyllabusAdapter(private var syllabusList: ArrayList<Syllabus>, private val
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder){
             with(syllabusList[position]){
+                if (position == syllabusList.size - 1){
+                    (syllabusRecyclerViewItemBinding.root.layoutParams as RecyclerView.LayoutParams).bottomMargin = 100
+                }
                 syllabusRecyclerViewItemBinding.subject.text = subjectName
                 syllabusRecyclerViewItemBinding.classNumber.text = context.resources.getString(R.string.str_class_section, "$className$sectionName")
                 syllabusRecyclerViewItemBinding.title.text = title
