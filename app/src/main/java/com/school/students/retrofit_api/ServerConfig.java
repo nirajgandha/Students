@@ -16,4 +16,5 @@ public class ServerConfig {
     static final String UPLOAD_HOMEWORK_API = "uploadHomework";
     static final String GET_GALLERY_API = "getGallerylist";
     static final String GET_ACTIVITY_API = "studentActivity";
+    static final String GET_FEES_API = "studentFeeHistory";
 }

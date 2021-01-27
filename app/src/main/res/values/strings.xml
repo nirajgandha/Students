@@ -117,4 +117,6 @@
     <string name="instruction">Instructions:\n%s</string>
     <string name="profile">Profile</string>
     <string name="class_s">Class %s</string>
+    <string name="fee_found_successful">Fees detail has been found successfully.</string>
+    <string name="payment_string">₹ %s</string>
 </resources>

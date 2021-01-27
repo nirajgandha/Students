@@ -83,4 +83,8 @@ public interface APIInterface {
     @FormUrlEncoded
     @POST(ServerConfig.GET_ACTIVITY_API)
     Call<ToDoActivityResponse> getActivityListApi(@Field("student_id") String student_id);
+
+    @FormUrlEncoded
+    @POST(ServerConfig.GET_FEES_API)
+    Call<FeeResponse> getFeeListApi(@Field("student_id") String student_id);
 }

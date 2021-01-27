@@ -49,6 +49,7 @@ class SelectStudentActivity : AppCompatActivity(), StudentSelectedListener {
                 callSelectedStudent()
             }
         }
+        binding.backNavigation.setOnClickListener { onBackPressed() }
     }
 
     private fun callSelectedStudent() {

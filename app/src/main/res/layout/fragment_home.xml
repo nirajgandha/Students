@@ -279,6 +279,8 @@
                         android:src="@drawable/fee_icon"
                         android:layout_marginTop="@dimen/_9sdp"
                         android:id="@+id/imgView5"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
                         android:contentDescription="@null"/>
 
                     <TextView
