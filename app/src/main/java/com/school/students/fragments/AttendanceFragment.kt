@@ -121,15 +121,12 @@ class AttendanceFragment : Fragment() {
     }
 
     private fun setEventDot(titleName: String): Drawable {
-        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_dots)
-        if (titleName.equals("present", true)) {
-            drawable?.setTint(resources.getColor(R.color.present, requireContext().theme))
+        val drawable = if (titleName.equals("present", true)) {
+            ContextCompat.getDrawable(requireContext(), R.drawable.present_drawable)
         } else {
-            drawable?.setTint(resources.getColor(R.color.absent, requireContext().theme))
+            ContextCompat.getDrawable(requireContext(), R.drawable.absent_drawable)
         }
-
-        //Add padding to too large icon
-        return InsetDrawable(drawable, 100, 0, 100, 0)
+        return drawable!!
     }
 
     private fun getFormattedDateArray(date_time : String): List<String> {

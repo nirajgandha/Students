@@ -9,13 +9,11 @@ import android.graphics.drawable.InsetDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.text.Html
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -29,9 +27,7 @@ import com.school.students.customui.materialcalendarview.listeners.OnCalendarPag
 import com.school.students.customui.materialcalendarview.listeners.OnDayClickListener
 import com.school.students.customui.materialcalendarview.utils.EventImage
 import com.school.students.databinding.CalendarDialogLayoutBinding
-import com.school.students.databinding.FragmentAttendanceBinding
 import com.school.students.databinding.FragmentCalendarBinding
-import com.school.students.databinding.NoticeDialogLayoutBinding
 import com.school.students.interfaces.CalendarItemClickListener
 import com.school.students.model.CalendarItem
 import com.school.students.model.CalendarResponse
@@ -212,10 +208,7 @@ class CalendarFragment : Fragment(), CalendarItemClickListener {
     }
 
     private fun setEventDot(): Drawable {
-        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_dots)
-        drawable?.setTint(resources.getColor(R.color.absent, requireContext().theme))
-        //Add padding to too large icon
-        return InsetDrawable(drawable, 100, 0, 100, 0)
+        return ContextCompat.getDrawable(requireContext(), R.drawable.absent_drawable)!!
     }
 
     private fun getFormattedDateArray(date_time: String): List<String> {
